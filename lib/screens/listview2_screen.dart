@@ -8,18 +8,21 @@ class ListView2Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
  
-    final options = ["MegaMan","Metal Gear","Super Smash","Hades"];
+    final options = ["MegaMan","Metal Gear","Super Smash","Hades","Pokemon"];
  
     return  Scaffold(
       appBar: AppBar(
           title: const Text("ListView Tipo 2"),
+          elevation: 0,
+          backgroundColor: Colors.indigo,
       ),
       body: ListView.separated(
         itemCount: options.length,
         itemBuilder: (BuildContext context, int index) => ListTile(
             leading:  const Icon(Icons.abc),
             title:    Text(options[index]),
-            trailing: const Icon(Icons.arrow_forward_ios_outlined),
+            trailing: const Icon(Icons.arrow_forward_ios_outlined,color: Colors.indigo,),
+            onTap: (){},
         ), 
         separatorBuilder: (BuildContext _ , int __) =>  const Divider(),
 
