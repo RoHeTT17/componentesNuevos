@@ -9,8 +9,15 @@ class Card2Custom extends StatelessWidget {
       elevation: 10,
       child: Column(
         children: const [
-          Image(image: NetworkImage('https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg')),
-        ],
+
+          //Image(image: NetworkImage('https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg')),
+            FadeInImage(
+                    image: NetworkImage('https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg'), 
+                    placeholder: AssetImage('lib/assets/jar-loading.gif'),
+                    width: double.infinity,
+                    height: 250,
+                    ),        
+                   ],
       ),
     );
   }
