@@ -26,7 +26,7 @@ class AppRoutes{
      MenuOption(route: 'alert', name: 'Alertas',     screen: const AlertScreen(),     icon: Icons.bedroom_child_outlined),
      MenuOption(route: 'view1', name: 'ListView 1',  screen: const ListViewScreen(),  icon: Icons.list_alt),
      MenuOption(route: 'view2', name: 'ListView 2',  screen: const ListView2Screen(), icon: Icons.list),
-    
+     MenuOption(route: 'avatar', name:'Avatar',      screen: const AvatarScreen(),    icon: Icons.supervised_user_circle_outlined),
    ];
   
    //Obtener las opciones
