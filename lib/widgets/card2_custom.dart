@@ -25,7 +25,7 @@ class Card2Custom extends StatelessWidget {
           //Image(image: NetworkImage('https://static.vecteezy.com/system/resources/previews/000/246/312/original/mountain-lake-sunset-landscape-first-person-view-vector.jpg')),
              FadeInImage(
                     image: NetworkImage(imageURL), 
-                    placeholder: AssetImage('lib/assets/jar-loading.gif'),
+                    placeholder: const AssetImage('lib/assets/jar-loading.gif'),
                     width: double.infinity,
                     height: 230,
                     fit: BoxFit.cover,
@@ -35,7 +35,7 @@ class Card2Custom extends StatelessWidget {
                    if(titleImg != null)
                    Container(
                      alignment: AlignmentDirectional.centerEnd,
-                     padding: EdgeInsets.only(right: 20,top: 10, bottom: 10),
+                     padding: const EdgeInsets.only(right: 20,top: 10, bottom: 10),
                     //  child:  Text(titleImg ?? 'No title'), // como se hce la evaluación del if, esto no es nesario
                     child: Text(titleImg!), // ya se evalua que no sea null, por eso se pone el !
                    )

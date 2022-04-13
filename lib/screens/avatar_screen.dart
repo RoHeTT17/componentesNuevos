@@ -21,8 +21,11 @@ class AvatarScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Center(
-        child: const Text('Hola Mundo'),
+      body: const Center(
+        child: CircleAvatar(
+          maxRadius: 120,
+          backgroundImage: NetworkImage('https://fotografias.antena3.com/clipping/cmsimages01/2016/09/06/52D96EF9-21A0-4B07-AE38-28A20D47106B/98.jpg?crop=1120,630,x0,y5&width=1900&height=1069&optimize=high&format=webply'),
+        )
      ),
    );
   }
