@@ -12,6 +12,9 @@ class InputCustom extends StatelessWidget {
   final TextInputType? pTextInputType;
   final bool? pObscureText;
 
+  final String formProperty;
+  final Map<String,String> formValues;
+
   const InputCustom({
     Key? key, 
     this.pHintText,
@@ -22,7 +25,9 @@ class InputCustom extends StatelessWidget {
     this.pAutoFocus, 
     this.pTextInputType, 
     this.pInitialValue,
-    this.pObscureText
+    this.pObscureText, 
+   required this.formProperty, 
+   required this.formValues
 
   }) : super(key: key);
 
@@ -38,7 +43,7 @@ class InputCustom extends StatelessWidget {
 
       textCapitalization: TextCapitalization.words,
       onChanged: (value){
-
+            formValues[formProperty] = value;
       },
 
       validator: (value){
