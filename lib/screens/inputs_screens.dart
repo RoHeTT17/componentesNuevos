@@ -69,12 +69,12 @@ class InputsScreen extends StatelessWidget {
                       FocusScope.of(context).requestFocus(FocusNode());
 
                       if(!myFormkey.currentState!.validate()){
-                        print('Formulario no valido');
+                        //print('Formulario no valido');
                         return;
                       }
 
                         //imprimir valores del formularios
-                        print(formValues);
+                       //print(formValues);
                    },
                     
                 ),
