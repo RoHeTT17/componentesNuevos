@@ -52,6 +52,17 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
       
     });
 
+    if(scrollController.position.pixels + 100 <= scrollController.position.maxScrollExtent) {
+      //Si no esta al final, no hacer la animación
+      return;
+    } else {
+      scrollController.animateTo(
+        scrollController.position.pixels + 120, //avence un poco al terminar de cargar
+        duration: const Duration(milliseconds: 300), 
+        curve:    Curves.fastOutSlowIn
+        );
+    }
+
   }
 
   void add5(){
@@ -70,6 +81,23 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
   }
 
 
+  Future<void> onRefresh() async{
+
+  await Future.delayed(const Duration(seconds:  2));
+
+  //obtener el ultimo id
+   final lastID = imagesIds.last;
+
+  //borrar imagenes
+  imagesIds.clear();
+
+  //agregar a imagen (indice) que seguia de la ultima
+  imagesIds.add(lastID+1);
+  //agregar las siguientes 5
+  add5();
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -85,24 +113,31 @@ class _InfiniteScrollScreenState extends State<InfiniteScrollScreen> {
 
         child: Stack(
           children: [
-            ListView.builder(
-              physics: const BouncingScrollPhysics(), // para agregar un efecto como el de ios al llegar al final del scroll
-              controller: scrollController,
-              itemCount: imagesIds.length,
-              itemBuilder: (BuildContext context, int index) {  
-                return FadeInImage(
-                    placeholder: const AssetImage('lib/assets/jar-loading.gif'), 
-                    // image: NetworkImage('https://picsum.photos/500/300?image=${index+1}'),
-                      image: NetworkImage('https://picsum.photos/500/300?image=${imagesIds[index]}'),
-                    width: 250,
-                    height: 250,
-                    fit: BoxFit.cover,
-  
-                );
-              },
+            RefreshIndicator(
+              color: AppTheme.primary,
+              onRefresh: onRefresh,
+
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(), // para agregar un efecto como el de ios al llegar al final del scroll
+                controller: scrollController,
+                itemCount: imagesIds.length,
+                itemBuilder: (BuildContext context, int index) {  
+                  return FadeInImage(
+                      placeholder: const AssetImage('lib/assets/jar-loading.gif'), 
+                      // image: NetworkImage('https://picsum.photos/500/300?image=${index+1}'),
+                        image: NetworkImage('https://picsum.photos/500/300?image=${imagesIds[index]}'),
+                      width: 250,
+                      height: 250,
+                      fit: BoxFit.cover,
               
+                  );
+                },
+                
+              ),
             ),
 
+
+            if(isLoading)//Solo mostrar cuando esta cargando
             //Ubicar un widget en el Stack
             Positioned(
                child: const _LoadingIcon(),
